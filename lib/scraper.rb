@@ -8,7 +8,7 @@ class Scraper
     students = []
     index_page.css("div.student-card").each do |student|
       #pry(Scraper)> index_page.css("div.student-card").first shows the invidual elements of each person
-
+      binding.pry
       student_hash = {
       :name => student.css("h4.student-name").text,
       :location => student.css("p.student-location").text,
@@ -25,6 +25,7 @@ class Scraper
     html = File.read(profile_url)
     profile_page = Nokogiri::HTML(html)
     links = profile_page.css("div.social-icon-container a").collect do |link|
+      binding.pry
       link.attribute("href").value
     end
 
